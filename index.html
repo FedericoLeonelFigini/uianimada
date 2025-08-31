@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UI Animada • Interacciones elegantes</title>
+  <meta name="description" content="Interacciones elegantes sin perder performance: scroll-reveal, tilt suave y botón magnético." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="Inicio">UI Animada</a>
+      <nav class="nav-links">
+        <a href="#features">Características</a>
+        <a href="#demo">Demo</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__copy reveal">
+          <h1>Interacciones elegantes <span class="gold">sin perder performance</span></h1>
+          <p>Animaciones con <em>transform</em> y <em>opacity</em>, respetando <code>prefers-reduced-motion</code> y usando <code>IntersectionObserver</code>.</p>
+
+          <!-- Botón magnético -->
+          <div class="magnet">
+            <a class="btn btn--primary magnet__target" href="#demo">Ver demo</a>
+          </div>
+
+          <div class="badges">
+            <span class="badge">Scroll-reveal</span>
+            <span class="badge">Tilt 3D</span>
+            <span class="badge">Magnético</span>
+          </div>
+        </div>
+
+        <figure class="hero__art reveal">
+          <!-- coloca tu logo si quieres: logopng.png en misma carpeta -->
+          <img src="logopng.png" alt="Logo / ilustración" loading="lazy" decoding="async" onerror="this.style.display='none'">
+          <div class="orb" aria-hidden="true"></div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- FEATURES (cards con tilt) -->
+    <section id="features" class="section">
+      <div class="container">
+        <h2 class="section__title reveal">Características clave</h2>
+        <div class="grid">
+          <article class="card tilt reveal">
+            <h3>Scroll-reveal</h3>
+            <p>Entrada suave por sección usando <code>IntersectionObserver</code>.</p>
+          </article>
+          <article class="card tilt reveal">
+            <h3>Tilt 3D</h3>
+            <p>Inclinación sutil al mover el mouse. Sólo <code>transform</code>.</p>
+          </article>
+          <article class="card tilt reveal">
+            <h3>Botón magnético</h3>
+            <p>Atracción suave del cursor, con <code>requestAnimationFrame</code>.</p>
+          </article>
+          <article class="card tilt reveal">
+            <h3>Accesible</h3>
+            <p>Respeta <code>prefers-reduced-motion</code> y teclado.</p>
+          </article>
+          <article class="card tilt reveal">
+            <h3>Performance</h3>
+            <p><code>will-change</code>, <code>passive listeners</code> y lazy media.</p>
+          </article>
+          <article class="card tilt reveal">
+            <h3>Reutilizable</h3>
+            <p>Drop-in: copia los 3 archivos y personaliza.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEMO (cards hover-lift + ripple) -->
+    <section id="demo" class="section section--alt">
+      <div class="container">
+        <h2 class="section__title reveal">Demo de interacciones</h2>
+
+        <div class="grid grid--demo">
+          <article class="demo-card reveal">
+            <h3>Hover lift</h3>
+            <p>Elevación y sombra suave al pasar el mouse.</p>
+            <button class="btn btn--ghost ripple">Probar</button>
+          </article>
+          <article class="demo-card reveal">
+            <h3>Foco accesible</h3>
+            <p>Anillo de foco visible y elegante sin scripts.</p>
+            <a class="btn btn--ghost ripple" href="#">Navegar</a>
+          </article>
+          <article class="demo-card reveal">
+            <h3>Detalles nativos</h3>
+            <p>Usamos <code>&lt;details&gt;</code> para micro-interacciones.</p>
+            <details class="details">
+              <summary>Ver más</summary>
+              <div class="details__content">
+                Micro-interacción barata: sin medir alturas, sin reflows pesados.
+              </div>
+            </details>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+      <div class="container">
+        <h2 class="section__title reveal">Preguntas frecuentes</h2>
+        <details class="faq-item reveal">
+          <summary>¿Esto es compatible con móviles?</summary>
+          <p>Sí. Las interacciones degradan graciosamente en touch y respetan “reducir movimiento”.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>¿Cómo personalizo colores?</summary>
+          <p>Edita las variables CSS en <code>:root</code> dentro de <code>styles.css</code>.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>Hecho con ♥ — UI Animada minimal</small>
+    </div>
+  </footer>
+</body>
+</html>
