@@ -4,21 +4,29 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>UI Animada • Interacciones elegantes</title>
-  <meta name="description" content="Interacciones elegantes sin perder performance: scroll-reveal, tilt suave y botón magnético." />
+  <meta name="description" content="Interacciones elegantes con fondo interactivo, ondas al clic, partículas y animaciones accesibles." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
   <script defer src="app.js"></script>
 </head>
 <body>
+  <!-- Canvas de fondo (se inyecta también desde JS por si lo movés de archivo) -->
+  <canvas class="bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- Header -->
   <header class="site-header">
     <div class="container nav">
-      <a class="brand" href="#inicio" aria-label="Inicio">UI Animada</a>
+      <a class="brand" href="#inicio" aria-label="Inicio">
+        <img src="./imagenes/logopng.png" alt="" class="brand__logo" onerror="this.style.display='none'">
+        UI Animada
+      </a>
       <nav class="nav-links">
         <a href="#features">Características</a>
         <a href="#demo">Demo</a>
         <a href="#faq">FAQ</a>
       </nav>
+      <button class="mode-toggle" aria-pressed="false" aria-label="Cambiar modo de fondo">Ondas</button>
     </div>
   </header>
 
@@ -28,84 +36,84 @@
       <div class="container hero__inner">
         <div class="hero__copy reveal">
           <h1>Interacciones elegantes <span class="gold">sin perder performance</span></h1>
-          <p>Animaciones con <em>transform</em> y <em>opacity</em>, respetando <code>prefers-reduced-motion</code> y usando <code>IntersectionObserver</code>.</p>
+          <p>Fondo interactivo con <em>ondas al clic</em> y <em>partículas</em> que reaccionan. Todo en canvas, respetando <code>prefers-reduced-motion</code>.</p>
 
-          <!-- Botón magnético -->
-          <div class="magnet">
-            <a class="btn btn--primary magnet__target" href="#demo">Ver demo</a>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="#demo">Probar interacciones</a>
+            <a class="btn btn--ghost" href="#features">Ver detalles</a>
+             <a class="btn btn-outline" href="https://federicoleonelfigini.github.io/proyectofinal-Figini/">Volver a FigiKhan</a>
           </div>
 
-          <div class="badges">
-            <span class="badge">Scroll-reveal</span>
-            <span class="badge">Tilt 3D</span>
-            <span class="badge">Magnético</span>
-          </div>
+          <ul class="hero__bullets">
+            <li>Canvas 2D optimizado (<code>desynchronized</code>, DPR capped)</li>
+            <li>Ondas con mezcla aditiva de color</li>
+            <li>Partículas con enlaces dinámicos</li>
+          </ul>
         </div>
 
         <figure class="hero__art reveal">
-          <!-- coloca tu logo si quieres: logopng.png en misma carpeta -->
-          <img src="logopng.png" alt="Logo / ilustración" loading="lazy" decoding="async" onerror="this.style.display='none'">
           <div class="orb" aria-hidden="true"></div>
         </figure>
       </div>
     </section>
 
-    <!-- FEATURES (cards con tilt) -->
+    <!-- FEATURES -->
     <section id="features" class="section">
       <div class="container">
         <h2 class="section__title reveal">Características clave</h2>
         <div class="grid">
           <article class="card tilt reveal">
-            <h3>Scroll-reveal</h3>
-            <p>Entrada suave por sección usando <code>IntersectionObserver</code>.</p>
+            <h3>Ondas al clic</h3>
+            <p>Generá ondas que se expanden y repelen/atraen partículas con una curva suave.</p>
           </article>
           <article class="card tilt reveal">
-            <h3>Tilt 3D</h3>
-            <p>Inclinación sutil al mover el mouse. Sólo <code>transform</code>.</p>
+            <h3>Enlaces dinámicos</h3>
+            <p>Líneas entre partículas cercanas con alpha proporcional a la distancia.</p>
           </article>
           <article class="card tilt reveal">
-            <h3>Botón magnético</h3>
-            <p>Atracción suave del cursor, con <code>requestAnimationFrame</code>.</p>
+            <h3>Modos de fondo</h3>
+            <p>Cambiá entre <strong>Ondas</strong> y <strong>Partículas</strong> desde el botón del header.</p>
           </article>
           <article class="card tilt reveal">
             <h3>Accesible</h3>
-            <p>Respeta <code>prefers-reduced-motion</code> y teclado.</p>
+            <p>Si el usuario reduce movimiento, el fondo se vuelve estático y liviano.</p>
           </article>
           <article class="card tilt reveal">
-            <h3>Performance</h3>
-            <p><code>will-change</code>, <code>passive listeners</code> y lazy media.</p>
+            <h3>Rendimiento</h3>
+            <p><code>requestAnimationFrame</code>, listeners <em>passive</em>, y <code>IntersectionObserver</code>.</p>
           </article>
           <article class="card tilt reveal">
-            <h3>Reutilizable</h3>
-            <p>Drop-in: copia los 3 archivos y personaliza.</p>
+            <h3>Personalizable</h3>
+            <p>Editá variables CSS para paleta, radios, sombras y densidad.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- DEMO (cards hover-lift + ripple) -->
+    <!-- DEMO -->
     <section id="demo" class="section section--alt">
       <div class="container">
         <h2 class="section__title reveal">Demo de interacciones</h2>
 
         <div class="grid grid--demo">
           <article class="demo-card reveal">
-            <h3>Hover lift</h3>
-            <p>Elevación y sombra suave al pasar el mouse.</p>
-            <button class="btn btn--ghost ripple">Probar</button>
+            <h3>Hover lift + Ripple</h3>
+            <p>Pasa el mouse y clickeá para ver la onda.</p>
+            <button class="btn btn--ghost ripple">Clic aquí</button>
           </article>
+
           <article class="demo-card reveal">
-            <h3>Foco accesible</h3>
-            <p>Anillo de foco visible y elegante sin scripts.</p>
-            <a class="btn btn--ghost ripple" href="#">Navegar</a>
+            <h3>Focus accesible</h3>
+            <p>Probá navegar con TAB, el foco es visible.</p>
+            <a class="btn btn--primary" href="#faq">Ir a FAQ</a>
           </article>
+
           <article class="demo-card reveal">
             <h3>Detalles nativos</h3>
-            <p>Usamos <code>&lt;details&gt;</code> para micro-interacciones.</p>
             <details class="details">
-              <summary>Ver más</summary>
+              <summary>¿Qué hace el modo “Ondas”?</summary>
               <div class="details__content">
-                Micro-interacción barata: sin medir alturas, sin reflows pesados.
+                Crea círculos concéntricos que se expanden; las partículas cercanas reaccionan con fuerzas físicas suaves.
               </div>
             </details>
           </article>
@@ -118,20 +126,27 @@
       <div class="container">
         <h2 class="section__title reveal">Preguntas frecuentes</h2>
         <details class="faq-item reveal">
-          <summary>¿Esto es compatible con móviles?</summary>
-          <p>Sí. Las interacciones degradan graciosamente en touch y respetan “reducir movimiento”.</p>
+          <summary>¿Funciona en móviles?</summary>
+          <p>Sí. Los toques también generan ondas. El consumo está limitado para no agotar batería.</p>
         </details>
         <details class="faq-item reveal">
-          <summary>¿Cómo personalizo colores?</summary>
-          <p>Edita las variables CSS en <code>:root</code> dentro de <code>styles.css</code>.</p>
+          <summary>¿Cómo cambio colores?</summary>
+          <p>Modificamos los colores a tu preferencia</p>
         </details>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <small>Hecho con ♥ — UI Animada minimal</small>
+    <div class="container foot-inner">
+      <nav class="socials">
+        <a href="https://www.instagram.com/figi_khan/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+        <span>·</span>
+        <a href="https://x.com/figikhan" target="_blank" rel="noopener" aria-label="X (Twitter)">X</a>
+        <span>·</span>
+        <a href="https://www.tiktok.com" target="_blank" rel="noopener" aria-label="TikTok">TikTok</a>
+      </nav>
+      <small>© Figikhan — Comidas caseras</small>
     </div>
   </footer>
 </body>
